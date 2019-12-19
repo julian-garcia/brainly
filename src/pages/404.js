@@ -1,14 +1,14 @@
 import React from "react"
 
-import Layout from "../components/layout"
+import Page from "../components/page"
 import SEO from "../components/seo"
 
 const NotFoundPage = () => (
-  <Layout>
+  <Page>
     <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
+    <h1>Page not found <span role="img" aria-label="jsx-a11y/accessible-emoji">&#128528;</span></h1>
+    <p>This page does not exist. Here's a list of all our links, please contact us if you can't find what you need here.</p>
+  </Page>
 )
 
 export default NotFoundPage

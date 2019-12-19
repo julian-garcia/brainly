@@ -1,0 +1,70 @@
+.logo, .site-title {
+  position: relative;
+
+  @include for-size(home-page) {
+    @include for-size(tablet-portrait-up) {
+      width: 300px;
+      position: absolute !important;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.site-title {
+  &, .page > & {
+    text-shadow: 0px 6px 6px $primary-accent;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+  }
+
+  .page > & {
+    margin: 1rem 0;
+  }
+
+  @include for-size(home-page) {
+    @include for-size(tablet-portrait-up) {
+      color: black;
+      text-align: center;
+      margin: 0;
+      font-size: 60px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -52px);
+    }
+  }
+}
+
+.logo {
+  @include for-size(phone-only) {
+    width: 120px;
+  }
+  @include for-size(home-page-logo) {
+    width: 120px;
+  }
+}
+
+.page-header {
+  .logo {
+    width: 120px;
+    left: 10px;
+    top: 10px;
+    transform: translate(0);
+  }
+
+  .site-title {
+    text-shadow: 0px 6px 6px $primary-accent;
+    color: white;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    margin: 0;
+  }
+}

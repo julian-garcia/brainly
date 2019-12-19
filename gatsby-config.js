@@ -1,11 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Brainly`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    navigationMenuItems: [`Mind maps|/404`, 
+                          `Speed reading|/404`, 
+                          `Quote|/404`,
+                          `SuperLinks|/404`,
+                          `Chaining|/404`,
+                          `Gratitudes|/404`],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
