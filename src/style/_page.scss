@@ -12,6 +12,15 @@
   padding: .5rem 1rem 1rem;
   max-width: 800px;
 
+  a {
+    color: $primary-accent;
+    text-decoration: none;
+  }
+
+  .quote-image {
+    width: 100%;
+  }
+
   @include for-size(tablet-portrait-up) {
     margin: $header-height auto 1rem;
     padding: 1rem 2rem;

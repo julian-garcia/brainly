@@ -4,7 +4,7 @@
 
   @for $i from 1 through $n {
     $branch-length-desktop: 300px;
-    $branch-length-tablet: 40vh;
+    $branch-length-tablet: 250px;
     $branch-length: 180px;
 
     &:nth-child(#{$i}) {
@@ -44,6 +44,29 @@
     }
     $degrees: $degrees + (360 / $n);
     $degrees-branch: $degrees-branch + (360 / $n) - 4;
+  }
+}
+
+@mixin flex-nav() {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+
+  &__item {
+    display: flex;
+    margin: 10px;
+  }
+
+  @include for-size(tablet-portrait-up) {
+    padding: 0 10%;
+    width: 80%;
+  }
+
+  @include for-size(tablet-landscape-up) {
+    padding: 0 calc((100vw - 700px) / 2);
+    width: 700px;
   }
 }
 

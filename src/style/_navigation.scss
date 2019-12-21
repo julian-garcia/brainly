@@ -1,6 +1,29 @@
+.nav__item, .page-nav__item {
+  background: #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 4px solid $primary-accent;
+  box-shadow: 4px 4px 0px 0px rgba($primary-accent, 1);
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem;
+  display: inline-block;
+  margin: 0 0 2rem;
+  transition: background-color .3s ease-in-out,
+              box-shadow .3s ease-in-out;
+
+  &:hover {
+    background: white;
+    box-shadow: 4px 4px 0px 0px darken($primary-accent, 20);
+  }
+}
+
 .nav {
   position: absolute;
   top: $header-height;
+
+  @include for-size(home-page-logo) { @include flex-nav(); }
+  @include for-size(phone-only) { @include flex-nav(); }
 
   @include for-size(home-page) {
     @include for-size(tablet-portrait-up) {
@@ -31,29 +54,17 @@
   }
 }
 
-.nav__item, .page-nav__item {
-  background: #ccc;
-  border-radius: 5px;
-  padding: 5px 10px;
-  border: 4px solid $primary-accent;
-  box-shadow: 4px 4px 0px 0px rgba($primary-accent, 1);
-  text-decoration: none;
-  color: black;
-  font-size: 1.5rem;
-  display: inline-block;
-  margin: 0 0 2rem;
-}
-
 .page-nav {
   position: absolute;
-  height: calc(100vh);
+  height: 100%;
   max-width: 500px;
   background: lightgray;
   right: 0;
   top:0;
-  padding: 3rem 1rem 0;
+  padding: 3.5rem 1rem 0;
   box-sizing: border-box;
   transition: right .5s ease-in-out, opacity .3s ease-in-out;
+  overflow-y: scroll;
 
   &.hide {
     right: -400px;
@@ -70,34 +81,35 @@
     top: 10px;
     right: 10px;
     font-size: 22px;
-    color: gray;
-    border-radius: 50%;
-    border: 2px solid gray;
-    height: 28px; width: 28px;
+    color: $primary-accent;
+    font-size: 40px;
     padding: 0;
-    line-height: 22px;
+    transition: color .3s ease-in-out;
 
     &:hover {
       cursor: pointer;
+      color: darken($primary-accent, 20);
     }
   }
-}
 
-.page-nav+.menu-toggle {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: gray;
-  font-size: 40px;
-  transition: opacity .5s ease-in-out;
-  z-index: 0;
+  &+.menu-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: $primary-accent;
+    font-size: 40px;
+    transition: opacity .5s ease-in-out,
+                color .3s ease-in-out;
+    z-index: 0;
 
-  &:hover {
-    cursor: pointer;
-  }
+    &:hover {
+      cursor: pointer;
+      color: white;
+    }
 
-  &.hide {
-    opacity: 0;
-    z-index: -1;
+    &.hide {
+      opacity: 0;
+      z-index: -1;
+    }
   }
 }

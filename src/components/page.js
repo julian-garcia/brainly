@@ -12,7 +12,8 @@ const Page = ({ children }) => {
     query navItems {
       site {
         siteMetadata {
-          navigationMenuItems
+          navigationMenuItems,
+          title
         }
       }
     }
@@ -23,14 +24,14 @@ const Page = ({ children }) => {
       <Link to="/" className="page-header">
         <Image />
       </Link>
-      <h1 className="site-title">Brainly</h1>
+      <h1 className="site-title">{data.site.siteMetadata.title}</h1>
       <PageNavigation menuItems={data.site.siteMetadata.navigationMenuItems} />
       <main className="page-content">
         { children }
       </main>
       <footer>
         &copy; {new Date().getFullYear()}, {` `}
-        <a href="https://julian-garcia.uk">Julian Garcia</a>
+        <a href="https://julian-garcia.uk" target="_blank" rel="noopener noreferrer">Julian Garcia</a>
       </footer>
     </div>
   )
