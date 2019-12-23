@@ -11,6 +11,7 @@
   color: white;
   padding: .5rem 1rem 1rem;
   max-width: 800px;
+  position: relative;
 
   a {
     color: $primary-accent;
@@ -21,9 +22,19 @@
     width: 100%;
   }
 
+  .back-link {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+  }
+
+  .number-image {
+    max-height: 400px;
+  }
+
   @include for-size(tablet-portrait-up) {
     margin: $header-height auto 1rem;
-    padding: 1rem 2rem;
+    padding: 1rem 2rem 2rem;
     border-radius: 50px;
     color: white;
   }

@@ -1,25 +1,46 @@
-const fetch = require(`node-fetch`)
-
-exports.sourceNodes = async ({
-  actions: { createNode },
-  createContentDigest,
-}) => {
-  // get data from GitHub API at build time
-  const result = await fetch(`https://quotes.rest/qod.json`)
-  const resultData = await result.json()
-  // create node for build time data example in the docs
-  createNode({
-    quote: resultData.contents.quotes[0].quote,
-    author: resultData.contents.quotes[0].author,
-    background: resultData.contents.quotes[0].background,
-    title: resultData.contents.quotes[0].title,
-    // required fields
-    id: `quote-data`,
-    parent: null,
-    children: [],
-    internal: {
-      type: `Quote`,
-      contentDigest: createContentDigest(resultData),
-    },
-  })
-}
+const path = require(`path`);
+const slash = require(`slash`);
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions;
+  return graphql(
+    `
+      {
+        allContentfulSuperLink {
+          edges {
+            node {
+              id
+              slug
+              number
+              word
+              image {
+                file {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  ).then(result => {
+      if (result.errors) {
+        console.log("Error retrieving contentful data",      result.errors);
+      }
+      // Resolve the paths to our template
+      const numberSystemPage = path.resolve("./src/pages/number-system/entry.js");
+      // Then for each result we create a page.
+      result.data.allContentfulSuperLink.edges.forEach(edge => {
+        createPage({
+          path: `/number-system/entry/${edge.node.slug}/`,
+          component: slash(numberSystemPage),
+          context: {
+	          slug: edge.node.slug,
+            id: edge.node.id
+          }
+        });
+      });
+    })
+    .catch(error => {
+      console.log("Error retrieving contentful data", error);
+    });
+};

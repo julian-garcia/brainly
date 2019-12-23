@@ -4,7 +4,7 @@ import SEO from "../components/seo"
 
 const IndexPage = ({data}) => (
   <Home>
-    <SEO title="Home" />
+    <SEO title="Brainly - Home" />
   </Home>
 )
 

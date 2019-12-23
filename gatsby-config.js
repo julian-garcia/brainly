@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: `Brainly`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    description: `Gatsby progressive web app for memory improvement techniques`,
     author: `@gatsbyjs`,
-    navigationMenuItems: [`Mind maps|/abc`, 
+    navigationMenuItems: [`Mind maps|/mind-maps`, 
                           `Speed reading|/404`, 
                           `Quote|/quote`,
-                          `SuperLinks|/404`,
+                          `Number system|/number-system`,
                           `Chaining|/404`,
                           `Gratitudes|/404`],
   },
@@ -33,6 +33,13 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/brain.png`, // This path is relative to the root of the site.
       },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `tgqacvzj7ei4`,
+        accessToken: `_51PA6D8--9Q_wGc4EKHiL2NUOBst2JpHVH9Io8ClOo`
+      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

@@ -1,0 +1,54 @@
+.number-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__title {
+    padding: 0 10px 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+
+    &.hidden {
+      background: white;
+      position: relative;
+      border-bottom: 2px solid $primary-accent;
+      
+      &:before {
+        content: 'Hidden';
+        left: 50%;
+        top: 4px;
+        transform: translateX(-50%);
+        color: black;
+        position: absolute;
+        text-align: center;
+      }
+    }
+  }
+
+  &__item {
+    text-align: center;
+    background: transparent;
+    padding: 0 1rem 1rem;
+    flex-basis: auto;
+    flex-grow: 0;
+    min-width: 100px;
+  }
+
+  &__button {
+    font-size: 30px;
+    display: none;
+    color: $primary-accent;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.show {
+      display: inline;
+    }
+  }
+
+  &__link {
+    font-size: 30px;
+  }
+}

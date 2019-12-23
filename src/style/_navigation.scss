@@ -65,6 +65,7 @@
   box-sizing: border-box;
   transition: right .5s ease-in-out, opacity .3s ease-in-out;
   overflow-y: scroll;
+  z-index: 1;
 
   &.hide {
     right: -400px;

@@ -1,23 +1,9 @@
 import React, { useState, useEffect } from "react"
 import Page from "../components/page"
 import SEO from "../components/seo"
-// For build time fetch
-// import { graphql, useStaticQuery } from "gatsby"
 
 const QuotePage = () => {
-  // Fetch quote at build time - see gatsby-node.js for underlying fetch configuration
-  // const quoteData = useStaticQuery(graphql`
-  //   query {
-  //     quote {
-  //       quote
-  //       author
-  //       background
-  //       title
-  //     }
-  //   }
-  // `)
-
-  // Fetch quote at client-side runtime
+  // Fetch quote at client-side runtime (as opposed to build time)
   const [quote, setQuote] = useState(0) 
     useEffect(() => {
       fetch(`https://quotes.rest/qod.json`)
@@ -31,7 +17,7 @@ const QuotePage = () => {
 
   return (
     <Page>
-      <SEO title="Quote" />
+      <SEO title="Brainly - Quote" />
       <h1>Inspirational Quote</h1>
       <p>"{quote[0]}"</p>
       <p>{quote[1]}</p>
