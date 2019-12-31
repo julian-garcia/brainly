@@ -14,8 +14,4 @@ Navigation.propTypes = {
   menuItems: PropTypes.array,
 }
 
-// Navigation.defaultProps = {
-//   menuItems: `Brainly`,
-// }
-
 export default Navigation

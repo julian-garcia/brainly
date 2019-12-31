@@ -3,6 +3,25 @@
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+
+  .login-btn {
+    position: absolute;
+    top: 95px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+
+    @include for-size(desktop-up) {
+      top: 140px;
+      left: 1rem;
+      transform: translateX(0);
+    }
+
+    @include for-size(phone-only) {
+      left: 100%;
+      transform: translateX(-115%);
+    }
+  }
 }
 
 .page-content {
@@ -44,5 +63,20 @@
     @include for-size(phone-only) {
       margin: 0;
     }
+  }
+}
+
+reach-portal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0,0,0,.7);
+  border: 3px solid white;
+  padding: 1rem;
+
+  button, input {
+    margin-bottom: .5rem;
+    font-size: 1.5rem;
   }
 }

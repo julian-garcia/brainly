@@ -17,11 +17,10 @@ const QuotePage = () => {
 
   return (
     <Page>
-      <SEO title="Brainly - Quote" />
+      <SEO title="Quote" />
       <h1>Inspirational Quote</h1>
       <p>"{quote[0]}"</p>
       <p>{quote[1]}</p>
-      <img src={quote[2]} alt="" className="quote-image" />
     </Page>
   )
 }

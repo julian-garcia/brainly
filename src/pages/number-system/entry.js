@@ -9,7 +9,7 @@ const NumberEntry = ({data}) => {
   const { word, number, image } = data.contentfulSuperLink
   return (
     <Page>
-      <SEO title="Brainly - Number System" />
+      <SEO title="Number System" />
       <h1>Number System</h1>
       <Link to={`/number-system`} className="back-link">
         Back to listing <FontAwesomeIcon icon={faArrowCircleLeft} />

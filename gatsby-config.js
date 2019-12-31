@@ -1,8 +1,10 @@
+require("dotenv").config()
+
 module.exports = {
   siteMetadata: {
     title: `Brainly`,
-    description: `Gatsby progressive web app for memory improvement techniques`,
-    author: `@gatsbyjs`,
+    description: `Progressive web app for memory improvement techniques`,
+    author: `Julian Garcia`,
     navigationMenuItems: [`Mind maps|/mind-maps`, 
                           `Speed reading|/404`, 
                           `Quote|/quote`,
@@ -31,7 +33,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/brain.png`, // This path is relative to the root of the site.
+        icon: `src/images/brain.png`,
       },
     },
     {
@@ -40,6 +42,26 @@ module.exports = {
         spaceId: `tgqacvzj7ei4`,
         accessToken: `_51PA6D8--9Q_wGc4EKHiL2NUOBst2JpHVH9Io8ClOo`
       }
+    },
+    {
+      resolve: `gatsby-plugin-netlify-identity`,
+      options: {
+        url: `https://nostalgic-varahamihira-efe491.netlify.com/` 
+      }
+    },
+    {
+      resolve: `gatsby-plugin-firebase`,
+      options: {
+        features: {
+          auth: true,
+          database: true,
+          firestore: false,
+          storage: false,
+          messaging: false,
+          functions: true,
+          performance: false,
+        },
+      },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

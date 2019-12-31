@@ -16,6 +16,11 @@
     background: white;
     box-shadow: 4px 4px 0px 0px darken($primary-accent, 20);
   }
+
+  &.inline {
+    display: inline-block;
+    margin-right: 20px;
+  }
 }
 
 .nav {
