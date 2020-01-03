@@ -15,6 +15,7 @@
   &:hover {
     background: white;
     box-shadow: 4px 4px 0px 0px darken($primary-accent, 20);
+    cursor: pointer;
   }
 
   &.inline {
@@ -118,4 +119,11 @@
       z-index: -1;
     }
   }
+}
+
+.top-link {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 50px;
 }

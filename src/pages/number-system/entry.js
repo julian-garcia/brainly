@@ -11,8 +11,8 @@ const NumberEntry = ({data}) => {
     <Page>
       <SEO title="Number System" />
       <h1>Number System</h1>
-      <Link to={`/number-system`} className="back-link">
-        Back to listing <FontAwesomeIcon icon={faArrowCircleLeft} />
+      <Link to="/number-system" className="top-link">
+        <FontAwesomeIcon icon={faArrowCircleLeft} />
       </Link>
       <h2>{number} - {word}</h2>
       <img src={image.file.url} alt={word} className="number-image"></img>
