@@ -11,7 +11,8 @@ const MindMapPage = () => {
   const identity = useIdentityContext()
   const firebase = React.useContext(FirebaseContext)
   const [userMaps, setUserMaps] = React.useState()
-  const titleElement = document.querySelector('input[name="title"]')
+  const [title, setTitle] = React.useState()
+  const [exists, setExists] = React.useState()
 
   useFirebase(firebase => {
     if (identity.isLoggedIn) {
@@ -27,12 +28,12 @@ const MindMapPage = () => {
 
   function addMindMap(userId) {
     return function(e){
-      const title = titleElement.value;
       const mindMapExists = userMaps ? userMaps.filter(item => item.title === title) : '';
 
       if (!mindMapExists || mindMapExists.length === 0) {
         if (title) {
-          firebase.database().ref(`/mindmap/${userId}`).push({'title': title})
+          firebase.database().ref(`/mindmap/${userId}`).push({'title': title});
+          setExists('added');
         }
       }
 
@@ -44,6 +45,11 @@ const MindMapPage = () => {
           setUserMaps(Object.values(snapshot.val()[identity.user.id]))
         })
     }
+  }
+
+  function titleChange(e) {
+    setTitle(e.target.value);
+    setExists('already exists');
   }
 
   if (!identity.isLoggedIn) {
@@ -63,10 +69,10 @@ const MindMapPage = () => {
       <Link to="/mind-maps" className="top-link">
         <FontAwesomeIcon icon={faArrowCircleLeft} />
       </Link>
-      <input type="text" name="title" id="title" />
+      <input type="text" name="title" id="title" onChange={titleChange} />
       <button type="submit" onClick={addMindMap(identity.user.id)} className="inline page-nav__item">Add</button>
       {(userMaps) ? userMaps.map(mindmap => (
-        (mindmap.title === titleElement.value) ? <h2>Mindmap {mindmap.title} added &#128578;</h2> : '' 
+        (mindmap.title === title) ? <h2>Mindmap {mindmap.title} {exists} &#128578;</h2> : '' 
       )) : ''}
     </Page>
   )

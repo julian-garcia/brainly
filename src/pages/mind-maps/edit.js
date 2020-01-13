@@ -12,11 +12,11 @@ const MindMapPage = () => {
   const firebase = React.useContext(FirebaseContext)
   const [userMap, setUserMap] = React.useState()
   const [userMapKeys, setUserMapKeys] = React.useState()
-  const branchElement = document.querySelector('input[name="branch"]')
+  const [branch, setBranch] = React.useState()
   let mapId = '';
 
   if (identity.isLoggedIn) {
-    if (window.location.href.indexOf('=') == -1) window.location.href = '/mind-maps';
+    if (window.location.href.indexOf('=') === -1) window.location.href = '/mind-maps';
     mapId = window.location.href.split('=')[1].split('&')[0]
   }
 
@@ -33,10 +33,14 @@ const MindMapPage = () => {
     }
   }, [])
 
+  function changeBranch(e) {
+    setBranch(e.target.value);
+  }
+
   function addBranch(userId) {
     return function(e) {
-      if (branchElement.value) {
-        firebase.database().ref(`/mindmap/${userId}/${mapId}`).push(branchElement.value)
+      if (branch) {
+        firebase.database().ref(`/mindmap/${userId}/${mapId}`).push(branch)
       }
 
       firebase
@@ -66,7 +70,7 @@ const MindMapPage = () => {
       <Link to="/mind-maps" className="top-link">
         <FontAwesomeIcon icon={faArrowCircleLeft} />
       </Link>
-      <input type="text" name="branch" id="branch" />
+      <input type="text" name="branch" id="branch" onChange={changeBranch} />
       <button type="submit" onClick={addBranch(identity.user.id)} className="inline page-nav__item">Add Branch</button>
       <div className="map-links">
         {userMap ? userMap.map((branch, index) => (
